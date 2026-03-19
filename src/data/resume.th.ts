@@ -1,4 +1,6 @@
 import type { Resume } from "../types/resume";
+import pttepLogo from "../assets/logos/pttep.svg";
+import theGangLogo from "../assets/logos/the-gang.jpg";
 
 export const resume: Resume = {
   name: "พงศธร เพิ่มการเจริญ",
@@ -17,7 +19,7 @@ export const resume: Resume = {
       role: "Intermediate Frontend Developer",
       type: "On-site",
       company: "PTTEP",
-      companyLogo: "/logos/pttep.png",
+      companyLogo: pttepLogo,
       via: "ผ่านทางบริษัท The Gang Technology จำกัด",
       period: "2024 – ปัจจุบัน",
       bullets: [
@@ -33,7 +35,7 @@ export const resume: Resume = {
       role: "Intermediate Frontend Developer",
       type: "Full-time",
       company: "The Gang Technology Co., Ltd.",
-      companyLogo: "/logos/the-gang.png",
+      companyLogo: theGangLogo,
       via: "",
       period: "2023 – 2024",
       bullets: [
@@ -47,7 +49,7 @@ export const resume: Resume = {
       role: "Junior Frontend Developer",
       type: "Remote",
       company: "The Gang Technology Co., Ltd.",
-      companyLogo: "/logos/the-gang.png",
+      companyLogo: theGangLogo,
       via: "",
       period: "2022 – 2023",
       bullets: [

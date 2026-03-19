@@ -45,17 +45,20 @@ src/
 ### Installation
 
 1.  **Clone the repository:**
+
     ```bash
     git clone <repository-url>
     cd resume-website-pongsathorn-react
     ```
 
 2.  **Install dependencies:**
+
     ```bash
     npm install
     ```
 
 3.  **Start the development server:**
+
     ```bash
     npm run dev
     ```
@@ -68,6 +71,7 @@ src/
 ### Updating Resume Data
 
 You can easily update your professional information by editing these files:
+
 - `src/data/resume.eng.ts` (English version)
 - `src/data/resume.th.ts` (Thai version)
 
@@ -82,12 +86,15 @@ Place company logo images in `public/logos/` and update the `companyLogo` path i
 ## 🏗️ Development Tools
 
 ### Component Generation
+
 Use the built-in generator to create new components quickly:
+
 ```bash
 npm run generate
 ```
 
 ### Building for Production
+
 ```bash
 npm run build
 ```

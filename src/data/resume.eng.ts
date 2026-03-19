@@ -17,7 +17,7 @@ export const resume: Resume = {
       role: "Intermediate Frontend Developer",
       type: "On-site",
       company: "PTTEP",
-      companyLogo: "/logos/pttep.svg",
+      companyLogo: "../assets/logos/pttep.svg",
       via: "via The Gang Technology Co., Ltd.",
       period: "2024 – Present",
       bullets: [
@@ -33,7 +33,7 @@ export const resume: Resume = {
       role: "Intermediate Frontend Developer",
       type: "Full-time",
       company: "The Gang Technology Co., Ltd.",
-      companyLogo: "/logos/the-gang.jpg",
+      companyLogo: "../assets/logos/the-gang.jpg",
       via: "",
       period: "2023 – 2024",
       bullets: [
@@ -47,7 +47,7 @@ export const resume: Resume = {
       role: "Junior Frontend Developer",
       type: "Remote",
       company: "The Gang Technology Co., Ltd.",
-      companyLogo: "/logos/the-gang.jpg",
+      companyLogo: "../assets/logos/the-gang.jpg",
       via: "",
       period: "2022 – 2023",
       bullets: [

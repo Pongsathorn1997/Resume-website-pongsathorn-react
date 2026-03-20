@@ -1,4 +1,5 @@
 import profile1 from "../../../assets/profile3.png";
+import "./ProfilePanel.css";
 
 type Props = {
   name: string;
@@ -22,12 +23,9 @@ export default function ProfilePanel({ name, title }: Props) {
               "radial-gradient(ellipse 60% 80% at 50% 100%, #1e3a3a 0%, transparent 70%)",
           }}
         >
-          <img
-            src={profile1}
-            alt={name}
-            className="absolute top-30 left-1/2 w-[110%] max-w-[600px] -translate-x-1/2 object-cover"
-            style={{ filter: "drop-shadow(0 0 40px rgba(0,212,212,0.15))" }}
-          />
+          <div className="profile-img-wrapper">
+            <img src={profile1} alt={name} className="profile-img" />
+          </div>
         </div>
       </div>
 

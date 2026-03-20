@@ -1,0 +1,36 @@
+.landing-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.custom-cursor {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .landing-layout {
+    display: grid;
+    grid-template-columns: 72px 1fr 1fr;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .custom-cursor {
+    display: block;
+  }
+}
+
+/* Ensure content panels are scrollable on mobile */
+.main-content {
+  flex: 1;
+  padding-bottom: 80px; /* Space for bottom nav */
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    padding-bottom: 0;
+    overflow-y: auto;
+  }
+}

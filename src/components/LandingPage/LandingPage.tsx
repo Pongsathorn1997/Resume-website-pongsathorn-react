@@ -8,22 +8,23 @@ import WorkPanel from "./components/WorkPanel";
 import ProjectsPanel from "./components/ProjectsPanel";
 import SkillsPanel from "./components/SkillsPanel";
 import ContactPanel from "./components/ContactPanel";
+import "./LandingPage.css";
 
 export default function LandingPage() {
   const { resume } = useLanguage();
   const { cursorRef, ringRef } = useCursor();
 
   return (
-    <div className="relative h-screen cursor-none overflow-hidden bg-[#0a0a0a]">
+    <div className="relative cursor-none bg-[#0a0a0a] landing-layout">
       {/* Custom cursor */}
       <div
         ref={cursorRef}
-        className="pointer-events-none fixed z-9999 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-400"
+        className="pointer-events-none fixed z-9999 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-400 custom-cursor"
         style={{ boxShadow: "0 0 12px #00d4d4" }}
       />
       <div
         ref={ringRef}
-        className="pointer-events-none fixed z-9998 h-7 w-7 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-400/40 transition-all duration-150"
+        className="pointer-events-none fixed z-9998 h-7 w-7 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-400/40 transition-all duration-150 custom-cursor"
       />
 
       {/* Diagonal lines background */}
@@ -36,12 +37,9 @@ export default function LandingPage() {
       />
 
       {/* Layout grid */}
-      <div
-        className="relative z-10 grid h-full"
-        style={{ gridTemplateColumns: "72px 1fr 1fr" }}
-      >
-        <Sidebar />
-        <ProfilePanel name={resume.name} title={resume.title} />
+      <Sidebar />
+      <ProfilePanel name={resume.name} title={resume.title} />
+      <main className="relative z-10 main-content">
         <Routes>
           <Route path="/" element={<ContentPanel />} />
           <Route path="/work" element={<WorkPanel />} />
@@ -50,7 +48,7 @@ export default function LandingPage() {
           <Route path="/contact" element={<ContactPanel />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
-      </div>
+      </main>
     </div>
   );
 }

@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useLanguage } from "../../../context/LanguageContext";
+import "./Sidebar.css";
 
 const navItems = [
   {
@@ -106,68 +108,118 @@ const navItems = [
 
 export default function Sidebar() {
   const { language, setLanguage, t } = useLanguage();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleSidebar = () => setIsOpen(!isOpen);
 
   return (
-    <aside className="flex flex-col items-center justify-between border-r border-white/6 bg-black/30 py-6 backdrop-blur-md">
-      {/* Logo */}
-      <span className="font-display text-lg tracking-widest text-cyan-400">
-        PP
-      </span>
-
-      {/* Nav */}
-      <nav>
-        <ul className="flex list-none flex-col gap-7">
-          {navItems.map((item) => (
-            <li key={item.id} title={t(item.translationKey)}>
-              <NavLink
-                to={item.path}
-                end={item.path === "/"}
-                className={({ isActive }) =>
-                  `flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg transition-all duration-200 ${
-                    isActive
-                      ? "bg-cyan-400/10 text-cyan-400"
-                      : "text-neutral-500 hover:bg-cyan-400/10 hover:text-cyan-400"
-                  }`
-                }
-              >
-                {item.icon}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-      </nav>
-
-      <div className="flex flex-col gap-6 items-center">
-        {/* Language Toggle */}
-        <button
-          onClick={() => setLanguage(language === "en" ? "th" : "en")}
-          className="font-mono text-[0.7rem] text-neutral-500 transition-colors hover:text-cyan-400 uppercase tracking-widest"
-          title="Switch Language"
-        >
-          {language === "en" ? "TH" : "EN"}
-        </button>
-
-        {/* Print Button */}
-        <button
-          onClick={() => window.print()}
-          className="text-neutral-500 transition-colors hover:text-cyan-400"
-          title="Download CV"
-        >
+    <>
+      {/* Mobile Toggle Button */}
+      <button
+        className="mobile-toggle"
+        onClick={toggleSidebar}
+        aria-label="Toggle Menu"
+      >
+        {isOpen ? (
           <svg
             fill="none"
             stroke="currentColor"
-            strokeWidth={1.5}
+            strokeWidth={2}
             viewBox="0 0 24 24"
-            className="h-5 w-5"
+            className="h-6 w-6"
           >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"
+              d="M6 18L18 6M6 6l12 12"
             />
           </svg>
-        </button>
-      </div>
-    </aside>
+        ) : (
+          <svg
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
+            className="h-6 w-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M4 6h16M4 12h16m-7 6h7"
+            />
+          </svg>
+        )}
+      </button>
+
+      {/* Overlay for mobile */}
+      <div
+        className={`sidebar-overlay ${isOpen ? "is-open" : ""}`}
+        onClick={toggleSidebar}
+      />
+
+      <aside className={`sidebar-aside ${isOpen ? "is-open" : ""}`}>
+        {/* Logo */}
+        <span className="font-display text-lg tracking-widest text-cyan-400 sidebar-logo">
+          PP
+        </span>
+
+        {/* Nav */}
+        <nav className="w-full">
+          <ul className="sidebar-nav-list">
+            {navItems.map((item) => (
+              <li
+                key={item.id}
+                title={t(item.translationKey)}
+                className="w-full"
+              >
+                <NavLink
+                  to={item.path}
+                  end={item.path === "/"}
+                  onClick={() => setIsOpen(false)}
+                  className={({ isActive }) =>
+                    `nav-item-link ${isActive ? "active" : ""}`
+                  }
+                >
+                  <span className="shrink-0">{item.icon}</span>
+                  <span className="nav-label">{t(item.translationKey)}</span>
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="sidebar-bottom-actions">
+          {/* Language Toggle */}
+          <button
+            onClick={() => setLanguage(language === "en" ? "th" : "en")}
+            className="font-mono text-[0.7rem] text-neutral-500 transition-colors hover:text-cyan-400 uppercase tracking-widest"
+            title="Switch Language"
+          >
+            {language === "en" ? "TH" : "EN"}
+          </button>
+
+          {/* Print Button */}
+          <button
+            onClick={() => window.print()}
+            className="text-neutral-500 transition-colors hover:text-cyan-400"
+            title="Download CV"
+          >
+            <svg
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={1.5}
+              viewBox="0 0 24 24"
+              className="h-5 w-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"
+              />
+            </svg>
+          </button>
+        </div>
+      </aside>
+    </>
   );
 }

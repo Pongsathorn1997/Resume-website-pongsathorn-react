@@ -1,0 +1,133 @@
+/* Sidebar.css */
+.sidebar-aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 280px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(10, 10, 10, 0.95);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem 0;
+  backdrop-filter: blur(20px);
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-100%); /* Hidden by default on mobile */
+}
+
+.sidebar-aside.is-open {
+  transform: translateX(0); /* Shown when open */
+}
+
+.mobile-toggle {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 110;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(34, 211, 238, 0.1);
+  border: 1px solid rgba(34, 211, 238, 0.2);
+  border-radius: 8px;
+  color: #22d3ee;
+  cursor: pointer;
+}
+
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: none;
+}
+
+.sidebar-overlay.is-open {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .sidebar-aside {
+    position: relative;
+    width: 72px;
+    transform: translateX(0);
+    background-color: rgba(0, 0, 0, 0.3);
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .mobile-toggle,
+  .sidebar-overlay {
+    display: none !important;
+  }
+}
+
+.sidebar-nav-list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 1rem;
+  width: 100%;
+  padding: 0 1.5rem;
+}
+
+.nav-item-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  border-radius: 12px;
+  color: #737373;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.nav-item-link.active {
+  background: rgba(34, 211, 238, 0.1);
+  color: #22d3ee;
+  box-shadow: 0 0 15px rgba(34, 211, 238, 0.15);
+}
+
+.nav-item-link:hover:not(.active) {
+  background: rgba(34, 211, 238, 0.05);
+  color: #22d3ee;
+}
+
+.nav-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .sidebar-nav-list {
+    gap: 1.75rem;
+    padding: 0;
+    align-items: center;
+  }
+
+  .nav-item-link {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .nav-label {
+    display: none; /* Hide labels on narrow desktop sidebar */
+  }
+}
+
+.sidebar-bottom-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}

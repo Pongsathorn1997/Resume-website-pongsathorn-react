@@ -1,0 +1,44 @@
+.profile-img-wrapper {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.profile-img {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 120%;
+  max-width: 580px;
+  transform: translateX(-50%);
+  object-fit: contain;
+  object-position: bottom;
+  transition: all 0.5s ease-in-out;
+  filter: drop-shadow(0 0 40px rgba(0, 212, 212, 0.15));
+}
+
+/* MacBook Air / 1440px range */
+@media (min-width: 1440px) {
+  .profile-img {
+    max-width: 520px;
+    bottom: -40px;
+  }
+}
+
+/* 1524px / Mid-range */
+@media (min-width: 1524px) {
+  .profile-img {
+    max-width: 680px;
+    bottom: 0;
+  }
+}
+
+/* 1920px / Large displays */
+@media (min-width: 1920px) {
+  .profile-img {
+    max-width: 800px;
+    bottom: -80px;
+  }
+}
